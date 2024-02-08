@@ -1,0 +1,9 @@
+.bg {
+  background-image: url("../../asset/banner.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  filter: brightness(0.3);
+  -webkit-filter: brightness(0.3);
+}

@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.bgImage {
+  background-image: url("../asset/banner.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+}

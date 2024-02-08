@@ -6,10 +6,10 @@ import { BiCross, BiMenu } from "react-icons/bi";
 const Header = () => {
   const [active, setActive] = useState<boolean>(false);
   return (
-    <div className="border-b">
-      <div className="container mx-auto  flex justify-between items-center min-h-16">
-        <section className="text-nowrap text-3xl font-extrabold uppercase bg-gradient-to-t from-orange-400 to-red-500 bg-clip-text max-w-fit text-transparent">
-          Crowd Fund
+    <div className="md:border-b z-50 bg-transparent fixed w-full">
+      <div className="container mx-auto  flex justify-between items-center  px-6 z-50 ">
+        <section className="text-nowrap md:text-3xl font-extrabold uppercase bg-gradient-to-t from-orange-400 to-red-500 bg-clip-text max-w-fit text-transparent">
+          <Link href={"/"}>Crowd Fund</Link>
         </section>
         <nav
           className={` ${

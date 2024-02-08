@@ -1,11 +1,10 @@
-import React from "react";
+"use client";
 
-const SearchResult = () => {
-  return (
-    <div className="bg-white w-full mt-3 p-3 rounded-md shadow-xl ">
-      Search Item
-    </div>
-  );
+import { ICampaign } from "@/types/types";
+import Image from "next/image";
+
+const SearchResult = ({ data }: ICampaign) => {
+  return <></>;
 };
 
 export default SearchResult;

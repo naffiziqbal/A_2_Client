@@ -9,7 +9,7 @@ import { HiSearchCircle } from "react-icons/hi";
 const Search = ({ data }: ICampaignProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<object[]>([]);
-  console.log(data);
+  // console.log(data);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
@@ -17,7 +17,7 @@ const Search = ({ data }: ICampaignProps) => {
     setSearchTerm(term.toLowerCase());
     // Perform search and update results
     const results = data.filter((item: ICampaign) =>
-      item?.title
+      item?.category
         .toLowerCase()
         .includes(term || term.toLowerCase() || term.toUpperCase())
     );

@@ -6,7 +6,7 @@ import { BiCross, BiMenu } from "react-icons/bi";
 const Header = () => {
   const [active, setActive] = useState<boolean>(false);
   return (
-    <div className="md:border-b z-50 bg-transparent fixed w-full ">
+    <div className="md:border-b z-50 bg-transparent  w-full ">
       <div className="container mx-auto  flex justify-between items-center md:min-h-16 px-6 z-50 ">
         <section className="text-nowrap md:text-3xl font-extrabold uppercase bg-gradient-to-t from-orange-400 to-red-500 bg-clip-text max-w-fit text-transparent">
           <Link href={"/"}>Crowd Fund</Link>
@@ -19,7 +19,7 @@ const Header = () => {
           }`}
         >
           <Link href={"/"}>Home</Link>
-          <Link href={"/donation"}>Campaign</Link>
+          <Link href={"/campaigns"}>Campaigns</Link>
           <Link href={"/statics"}>Statics</Link>
           <div
             className="absolute top-0 right-5 border p-2 rounded-full w-12 h-12 text-xl border-slate-950 flex justify-center items-center md:hidden"

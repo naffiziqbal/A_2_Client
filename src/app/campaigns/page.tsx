@@ -1,13 +1,27 @@
-import { ICampaign, ICampaignProps } from "@/types/types";
+"use client";
+import CampaignList from "@/components/campaigns/CampaignList";
+import Button from "@/components/ui/Button";
+import { ICampaign } from "@/types/types";
+import getCampaigns from "@/utils/getCampaigns";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const CampaignList = async ({ data }: ICampaignProps) => {
+const Campaigns = () => {
+  const [limit, setLimit] = useState<number | null>(1);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const getCampaign = async (limit: number | null) => {
+      const { data } = await getCampaigns(limit);
+      setData(data);
+      console.log(data);
+    };
+    getCampaign(limit);
+  }, [limit]);
   // console.log(data);
 
   return (
-    <>
+    <div className="">
       <div className="container mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 items-center md:mt-16 mt-8 rounded-lg gap-5 p-3">
         {data?.map((camp: ICampaign) => (
           <Link
@@ -39,16 +53,16 @@ const CampaignList = async ({ data }: ICampaignProps) => {
           </Link>
         ))}
       </div>
-      <div className="flex justify-center items-center my-12">
-        <Link
-          href={`/campaigns`}
+      <div className="flex items-center justify-center my-12">
+        <button
+          onClick={() => setLimit(null)}
           className=" border px-8 py-2 rounded-md uppercase font-semibold bg-gradient-to-br from-orange-400 to-red-400 duration-300 hover:scale-110 text-white"
         >
-          See All
-        </Link>
+          SEE ALL
+        </button>
       </div>
-    </>
+    </div>
   );
 };
 
-export default CampaignList;
+export default Campaigns;

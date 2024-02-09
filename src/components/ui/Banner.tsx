@@ -2,7 +2,7 @@ import Image from "next/image";
 import banner from "../../asset/banner.png";
 import style from "./Banner.module.css";
 import Search from "./Search";
-import getCampaigns from "@/utils/getProducts";
+import getCampaigns from "@/utils/getCampaigns";
 const Banner = async () => {
   const { data } = await getCampaigns();
 

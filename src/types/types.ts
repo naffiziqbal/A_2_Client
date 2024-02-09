@@ -36,3 +36,15 @@ export interface IDonation {
     donatorId: string
     donatorName: string
 }
+
+
+export interface IRegistrationInputs {
+    name: string
+    email: string
+    password: string
+    role: string
+}
+export interface ILoginInputs {
+    email: string
+    password: string
+}

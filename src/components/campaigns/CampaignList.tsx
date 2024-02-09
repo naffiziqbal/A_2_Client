@@ -15,13 +15,7 @@ const CampaignList = async ({ data }: ICampaignProps) => {
             href={`/campaign/${camp?._id}`}
             className="rounded-lg border p-3 overflow-hidden  h-auto hover:scale-105 duration-300 hover:shadow-2xl"
           >
-            <Image
-              className=""
-              src={camp?.image}
-              width={600}
-              height={300}
-              alt="image"
-            />
+            <Image src={camp?.image} width={600} height={300} alt="image" />
             <section className="mt-6">
               <p className="border rounded-md my-4 w-fit bg-neutral-50 text-black px-4 text-sm">
                 {camp?.category} Health

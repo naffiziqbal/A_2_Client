@@ -3,10 +3,11 @@ import { createDonation } from "@/utils/createDonation";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 const DonationModal = ({ modalOpen, setModalOpen, data }: any) => {
-  const [donorName, setDonorName] = useState("");
-  const [amount, setAmount] = useState(data.amount);
-  const donorId = "23902uisjdlk";
+  const [donorName, setDonorName] = useState(""); // Get Input Data
+  const [amount, setAmount] = useState(data.amount); // Get Input Data
+  const donorId = "23902uisjdlk"; //! Donor Id
 
+  //? Handle User Event
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(e.target.value);
   };
@@ -23,16 +24,19 @@ const DonationModal = ({ modalOpen, setModalOpen, data }: any) => {
       campaignTitle: data.title,
       campaignId: data?._id,
     };
+    //? Post Data
     const donation = await createDonation(donationData);
-    console.log(donation);
+    // console.log(donation);
     if (donation.success) {
       Swal.fire({
         title: donation.message,
         icon: "success",
+        text: "You're a Kind Hearted Person 🥹",
       });
       setModalOpen(false);
     }
   };
+
   return (
     <div
       className={`absolute duration-300 bg-white min-h-[16rem] md:w-1/2 border shadow-xl  p-3 w-3/4 rounded-md ${

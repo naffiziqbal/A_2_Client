@@ -26,3 +26,13 @@ export interface ICampaignProps {
 
     }[]
 }
+
+
+export interface IDonation {
+    _id: string
+    campaignId: string
+    campaignTitle: string
+    donationAmount: number,
+    donatorId: string
+    donatorName: string
+}

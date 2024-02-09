@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 const DonationModal = ({ modalOpen, setModalOpen, data }: any) => {
   const [donorName, setDonorName] = useState(""); // Get Input Data
   const [amount, setAmount] = useState(data.amount); // Get Input Data
+
   const donorId = "23902uisjdlk"; //! Donor Id
 
   //? Handle User Event

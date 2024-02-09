@@ -1,6 +1,7 @@
 "use client";
 import CampaignList from "@/components/campaigns/CampaignList";
 import Button from "@/components/ui/Button";
+import Loading from "@/components/ui/Loading";
 import { ICampaign } from "@/types/types";
 import getCampaigns from "@/utils/getCampaigns";
 import Image from "next/image";
@@ -9,11 +10,14 @@ import React, { useEffect, useState } from "react";
 
 const Campaigns = () => {
   const [limit, setLimit] = useState<number | null>(1);
+  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   useEffect(() => {
     const getCampaign = async (limit: number | null) => {
+      setLoading(true);
       const { data } = await getCampaigns(limit);
       setData(data);
+      setLoading(false);
       console.log(data);
     };
     getCampaign(limit);
@@ -58,7 +62,7 @@ const Campaigns = () => {
           onClick={() => setLimit(null)}
           className=" border px-8 py-2 rounded-md uppercase font-semibold bg-gradient-to-br from-orange-400 to-red-400 duration-300 hover:scale-110 text-white"
         >
-          SEE ALL
+          {!loading ? "SEE ALL" : <Loading />}
         </button>
       </div>
     </div>

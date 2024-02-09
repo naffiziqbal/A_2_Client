@@ -1,5 +1,4 @@
 export interface ICampaign {
-
     _id: string
     creatorId: string
     title: string
@@ -9,7 +8,7 @@ export interface ICampaign {
     category: string
     __v?: number
 
-}
+}{ }
 
 
 

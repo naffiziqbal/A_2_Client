@@ -19,7 +19,7 @@ const Header = () => {
           }`}
         >
           <Link href={"/"}>Home</Link>
-          <Link href={"/campaigns"}>Campaigns</Link>
+          <Link href={"/campaign"}>Campaigns</Link>
           <Link href={"/statics"}>Statics</Link>
           <div
             className="absolute top-0 right-5 border p-2 rounded-full w-12 h-12 text-xl border-slate-950 flex justify-center items-center md:hidden"

@@ -4,7 +4,7 @@ import style from "./Banner.module.css";
 import Search from "./Search";
 import getCampaigns from "@/utils/getCampaigns";
 const Banner = async () => {
-  const { data } = await getCampaigns();
+  const { data } = await getCampaigns(null);
 
   return (
     <div>

@@ -1,3 +1,4 @@
+import { AuthProvider } from "./Provider";
 import "./globals.css";
 export const metadata = {
   title: "Next.js",

@@ -1,25 +1,34 @@
 "use client";
 import Loading from "@/components/ui/Loading";
-import { IRegistrationInputs } from "@/types/types";
+import { ILoginInputs } from "@/types/types";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-const Registration = () => {
+const Login = () => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IRegistrationInputs>();
+  } = useForm<ILoginInputs>();
 
-  const handleForm: SubmitHandler<IRegistrationInputs> = (data) => {
+  const handleForm: SubmitHandler<ILoginInputs> = async (data) => {
     setLoading(true);
-    console.log(data);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+    try {
+      await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    setLoading(false);
   };
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-2xl w-full md:w-1/2 border h-fit p-3 bg-gray-50 rounded">
@@ -72,4 +81,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;

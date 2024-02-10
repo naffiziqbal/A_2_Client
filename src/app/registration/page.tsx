@@ -16,7 +16,6 @@ const Registration = () => {
   const handleForm: SubmitHandler<IRegistrationInputs> = (data) => {
     setLoading(true);
     console.log(data);
-
     setTimeout(() => {
       setLoading(false);
     }, 3000);

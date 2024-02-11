@@ -18,9 +18,8 @@ export default function RootLayout({
   const token = Cookies.get("token");
 
   useEffect(() => {
-    let userData;
     const getSingleUser = async (id: string, token: string) => {
-      const data = await getUser({ id, token });
+      const data = await getUser(id, token);
       await setUser(data?.user);
     };
     getSingleUser(id!, token!);

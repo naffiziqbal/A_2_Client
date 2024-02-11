@@ -1,11 +1,11 @@
 "use client";
 import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ContextProvider = createContext<any>({});
 
 const UserContext = ({ children }: { children: any }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<any>({});
   const [loading, setLoading] = useState(false);
 
   const createUser = () => {};
@@ -34,7 +34,7 @@ const UserContext = ({ children }: { children: any }) => {
 
   return (
     <ContextProvider.Provider value={value}>
-      {children}{" "}
+      {children}
     </ContextProvider.Provider>
   );
 };

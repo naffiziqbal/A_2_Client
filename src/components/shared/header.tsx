@@ -1,10 +1,13 @@
 "use client";
+import { ContextProvider } from "@/helper/context";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BiCross, BiMenu } from "react-icons/bi";
 
 const Header = () => {
   const [active, setActive] = useState<boolean>(false);
+  const { user } = useContext(ContextProvider);
+  // console.log(user);
   return (
     <div className="md:border-b z-50 bg-transparent  w-full ">
       <div className="container mx-auto w-full  flex justify-between items-center md:min-h-16 min-h-10 px-6 z-50 ">
@@ -21,6 +24,11 @@ const Header = () => {
           <Link href={"/"}>Home</Link>
           <Link href={"/campaign"}>Campaigns</Link>
           <Link href={"/statics"}>Statics</Link>
+          {user?._id ? (
+            <Link href={"/login"}>Logout</Link>
+          ) : (
+            <Link href={"/login"}>Login</Link>
+          )}
           <div
             className="absolute top-0 right-5 border p-2 rounded-full w-8 h-8 border-orange-400 text-orange-400 font-extrabold flex text-sm justify-center items-center md:hidden hover:bg-orange-400 hover:text-white"
             onClick={() => setActive(false)}

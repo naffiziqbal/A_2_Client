@@ -1,15 +1,17 @@
 "use client";
 import Loading from "@/components/ui/Loading";
+import { ContextProvider } from "@/helper/context";
 import { ILoginInputs } from "@/types/types";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
 const Login = () => {
-  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { user, loading, setLoading, login, setUser } =
+    useContext(ContextProvider);
 
   const {
     register,
@@ -20,16 +22,27 @@ const Login = () => {
   const handleForm: SubmitHandler<ILoginInputs> = async (data) => {
     setLoading(true);
     try {
-      await signIn("credentials", {
+      const response = await login({
         email: data.email,
         password: data.password,
-        redirect: false,
       });
+      console.log(response);
+      if (response.success === true) {
+        setUser(response.data.user);
+        Cookies.set("uid", response.data.user._id);
+        Cookies.set("token", response.data.token);
+        Swal.fire({
+          icon: "success",
+          text: response.message,
+        });
+        router.replace("/");
+      }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
     setLoading(false);
   };
+  // console.log(loading, user);
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-2xl w-full md:w-1/2 border h-fit p-3 bg-gray-50 rounded">
       <h1 className="text-center my-6 text-xl font-bold bg-gradient-to-br from-orange-400  to-red-400 bg-clip-text text-transparent">

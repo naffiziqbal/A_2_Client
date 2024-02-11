@@ -1,21 +1,60 @@
 "use client";
 import Loading from "@/components/ui/Loading";
+import { ContextProvider } from "@/helper/context";
 import { IRegistrationInputs } from "@/types/types";
+import { AxiosError } from "axios";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const Registration = () => {
-  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const { loading, setLoading, createUser, setUser } =
+    useContext(ContextProvider);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IRegistrationInputs>();
 
-  const handleForm: SubmitHandler<IRegistrationInputs> = (data) => {
+  const handleForm: SubmitHandler<IRegistrationInputs> = async (data) => {
     setLoading(true);
-    console.log(data);
+    // console.log(data);
+    const userData = {
+      email: data.email,
+      password: data.password,
+      role: "user",
+    };
+
+    try {
+      const user = await createUser({
+        name: data.name,
+        email: data.email,
+        password: data.password,
+        role: "user",
+      });
+      if (user.success) {
+        setUser(user?.data?.user);
+        Cookies.set("uid", user?.data?.user?._id);
+        Cookies.set("token", user?.data?.token);
+        Swal.fire({
+          icon: "success",
+          title: user.message,
+        });
+        setLoading(false);
+        router.replace("/");
+      }
+      // console.log(user);
+    } catch (err: any) {
+      Swal.fire({
+        icon: "error",
+        title: err?.response?.data?.error,
+      });
+      console.log(err.response.data);
+    }
     setTimeout(() => {
       setLoading(false);
     }, 3000);

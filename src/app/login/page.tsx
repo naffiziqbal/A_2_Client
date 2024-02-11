@@ -37,7 +37,11 @@ const Login = () => {
         });
         router.replace("/");
       }
-    } catch (err) {
+    } catch (err: any) {
+      Swal.fire({
+        icon: "error",
+        text: err?.response?.data?.error,
+      });
       // console.log(err);
     }
     setLoading(false);

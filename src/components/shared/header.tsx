@@ -1,13 +1,23 @@
 "use client";
 import { ContextProvider } from "@/helper/context";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
-import { BiCross, BiMenu } from "react-icons/bi";
+import React, { useContext, useEffect, useState } from "react";
+import { BiCross, BiLogOut, BiMenu } from "react-icons/bi";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
   const [active, setActive] = useState<boolean>(false);
-  const { user } = useContext(ContextProvider);
-  // console.log(user);
+  const { user, logout } = useContext(ContextProvider);
+  console.log(user);
+
+  const handleLogout = () => {
+    location.reload();
+    Cookies.remove("token");
+    Cookies.remove("uid");
+  };
+
   return (
     <div className="md:border-b z-50 bg-transparent  w-full ">
       <div className="container mx-auto w-full  flex justify-between items-center md:min-h-16 min-h-10 px-6 z-50 ">
@@ -25,7 +35,9 @@ const Header = () => {
           <Link href={"/campaign"}>Campaigns</Link>
           <Link href={"/statics"}>Statics</Link>
           {user?._id ? (
-            <Link href={"/login"}>Logout</Link>
+            <button onClick={handleLogout}>
+              <BiLogOut className="w-6 h-6 hover:text-orange-400 duration-300" />
+            </button>
           ) : (
             <Link href={"/login"}>Login</Link>
           )}

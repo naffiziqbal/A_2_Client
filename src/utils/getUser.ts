@@ -6,7 +6,6 @@ export const getUser = async (id: string, token: string) => {
             Authorization: `bearer ${token}`
         }
     })
-    const data = (await response).data
-    console.log(data)
+    const { data } = await response
     return data
 }

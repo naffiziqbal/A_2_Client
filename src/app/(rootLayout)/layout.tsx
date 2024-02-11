@@ -13,17 +13,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { setUser, setLoading } = useContext(ContextProvider);
+  const { setUser, setLoading, user } = useContext(ContextProvider);
   const id = Cookies.get("uid");
   const token = Cookies.get("token");
 
   useEffect(() => {
     const getSingleUser = async (id: string, token: string) => {
-      const data = await getUser(id, token);
-      await setUser(data?.user);
+      try {
+        const data = await getUser(id, token);
+        await setUser(data?.user);
+      } catch (err) {}
     };
     getSingleUser(id!, token!);
-  }, [token, id, setUser, setLoading]);
+  }, [token, id, setUser]);
 
   return (
     <html>

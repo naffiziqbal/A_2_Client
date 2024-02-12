@@ -1,6 +1,7 @@
 "use client";
 import Sidebar from "@/components/dashboard/Sidebar";
 import CreateAdmin from "@/components/shared/Modal/CreateAdmin";
+import CreateCampaign from "@/components/shared/Modal/CreateCampaign";
 import { ContextProvider } from "@/helper/context";
 import Link from "next/link";
 import React, { useContext } from "react";
@@ -15,6 +16,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {" "}
           <Sidebar />
           <CreateAdmin />
+          <CreateCampaign />
           <div className="w-full">{children}</div>
         </>
       ) : (

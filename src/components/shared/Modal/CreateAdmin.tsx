@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const CreateAdmin = () => {
   const [email, setEmail] = useState("");
-  const { adminModal, setAdminModal, loading, user } =
+  const { adminModal, setAdminModal, loading, setLoading } =
     useContext(ContextProvider);
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -15,6 +15,7 @@ const CreateAdmin = () => {
   };
 
   const handleSubmit = async (email: string) => {
+    setLoading(true);
     try {
       const response = axios.patch(
         "https://donation-server-six.vercel.app/api/v1/user/create-admin",
@@ -31,7 +32,9 @@ const CreateAdmin = () => {
         setAdminModal(false);
         setEmail("");
       }
+      setLoading(false);
     } catch (error: any) {
+      setLoading(false);
       Swal.fire({
         icon: "error",
         text: "No User Found",
@@ -47,7 +50,7 @@ const CreateAdmin = () => {
       }`}
     >
       <div className="h-full w-full p-3 mt-5">
-        <h1 className="text-center ">Please Enter Desired Email</h1>
+        <h1 className="text-center font-bold">Please Enter Desired Email</h1>
         <div className="my-3">
           <label htmlFor="email" className="leading-8">
             <input

@@ -10,6 +10,14 @@ export interface ICampaign {
 
 }{ }
 
+export interface ICampaignInputs {
+    title: string
+    amount: number
+    description: string
+    image: string
+    category: string
+}
+
 
 
 

@@ -46,8 +46,8 @@ This server is hosted on Vercel a  free hosting provider for modern web applicat
 ### Campaign Schema
 
 ```tsx
-		title: sring,
-		description: string,
+	title: sring,
+	description: string,
     amount: number,
     image: string,
     creatorId: string

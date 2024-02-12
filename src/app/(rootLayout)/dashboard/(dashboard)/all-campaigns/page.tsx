@@ -1,5 +1,6 @@
 import { ICampaign } from "@/types/types";
 import getCampaigns from "@/utils/getCampaigns";
+import Image from "next/image";
 import React from "react";
 import { BsTrash } from "react-icons/bs";
 import { GrUpdate } from "react-icons/gr";
@@ -11,7 +12,9 @@ const page = async () => {
       className="w-full *:h-full *:p-2  text-center flex flex-row  justify-center gap-5 *:w-full  items-center *:flex *:justify-center"
       key={campaign._id}
     >
-      <td>{campaign.image}</td>
+      <td>
+        <Image src={campaign.image} alt="image" width={100} height={100} />
+      </td>
       <td>{campaign.title}</td>
       <td className="cursor-pointer">
         <GrUpdate />

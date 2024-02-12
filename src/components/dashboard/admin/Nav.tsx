@@ -8,14 +8,13 @@ const Nav = () => {
   return (
     <>
       {user?.role === "admin" && (
-        <div className="h-full mt-12 w-fit">
+        <div className="h-full mt-12 md:w-1/3 w-full">
           <ul
-            className="font-semibold p-3 flex flex-col h-full  gap-4 *:text-nowrap
-          hover:*:bg-gradient-to-t hover:*:from-orange-400 hover:*:to-red-500 hover:*:bg-clip-text  hover:*:text-transparent duration-300
+            className="font-semibold p-3 flex flex-col h-full  gap-4 *:text-nowrap hover:*:text-orange-400 duration-300
           "
           >
             <li>
-              <Link href={"/all-campaigns"}>All Campaigns</Link>
+              <Link href={"/dashboard/all-campaigns"}>All Campaigns</Link>
             </li>
             <li>
               <button onClick={() => alert("Create New Campaign")}>

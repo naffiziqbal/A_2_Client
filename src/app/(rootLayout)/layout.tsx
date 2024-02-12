@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 
 import Header from "@/components/shared/header";
 import "../globals.css";
+import { set } from "react-hook-form";
 
 export default function RootLayout({
   children,
@@ -18,14 +19,18 @@ export default function RootLayout({
   const token = Cookies.get("token");
 
   useEffect(() => {
+    setLoading(true);
     const getSingleUser = async (id: string, token: string) => {
       try {
         const data = await getUser(id, token);
-        await setUser(data?.user);
-      } catch (err) {}
+        await setUser(data.user);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+      }
     };
     getSingleUser(id!, token!);
-  }, [token, id, setUser]);
+  }, [token, id, setUser, setLoading, user._id]);
 
   return (
     <html>

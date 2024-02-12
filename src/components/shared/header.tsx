@@ -28,13 +28,13 @@ const Header = () => {
           className={` ${
             active
               ? "w-full z-50 bg-slate-50 shadow-xl h-screen flex flex-col top-0 left-0 *:mt-6 mt-4 p-5 duration-300 absolute "
-              : "flex md:relative md:left-0 absolute -left-56 gap-3 uppercase text-sm font-semibold hover:*:bg-gradient-to-t hover:*:from-orange-400 hover:*:to-red-500 hover:*:bg-clip-text  hover:*:text-transparent duration-300"
+              : "flex md:relative md:left-0 absolute -left-[56rem] gap-3 uppercase text-sm font-semibold hover:*:bg-gradient-to-t hover:*:from-orange-400 hover:*:to-red-500 hover:*:bg-clip-text  hover:*:text-transparent duration-300"
           }`}
         >
           <Link href={"/"}>Home</Link>
           <Link href={"/campaign"}>Campaigns</Link>
           <Link href={"/statics"}>Statics</Link>
-          <Link href={"/dashboard"}>Dashboard</Link>
+          <Link href={"/dashboard/all-campaigns"}>Dashboard</Link>
           {user?._id ? (
             <button onClick={handleLogout}>
               <BiLogOut className="w-6 h-6 hover:text-orange-400 duration-300" />

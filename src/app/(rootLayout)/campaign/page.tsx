@@ -9,7 +9,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Campaigns = () => {
-  const [limit, setLimit] = useState<number | null>(1);
+  const [limit, setLimit] = useState<number | null>(10);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -18,7 +18,7 @@ const Campaigns = () => {
       const { data } = await getCampaigns(limit);
       setData(data);
       setLoading(false);
-      console.log(data);
+      // console.log(data);
     };
     getCampaign(limit);
   }, [limit]);
@@ -31,10 +31,10 @@ const Campaigns = () => {
           <Link
             key={camp?._id}
             href={`/campaign/${camp?._id}`}
-            className="rounded-lg border p-3 overflow-hidden  h-auto hover:scale-105 duration-300 hover:shadow-2xl"
+            className=" rounded-lg border p-3 overflow-hidden hover:scale-105 duration-300 hover:shadow-2xl h-96 object-contain "
           >
             <Image
-              className=""
+              className=" h-52 object-contain"
               src={camp?.image}
               width={600}
               height={300}
@@ -42,7 +42,7 @@ const Campaigns = () => {
             />
             <section className="mt-6">
               <p className="border rounded-md my-4 w-fit bg-neutral-50 text-black px-4 text-sm">
-                {camp?.category} Health
+                {camp.category ? camp?.category : " no category"}
               </p>
               <section className="flex flex-row justify-between gap-3 leading-10">
                 <p className="font-bold max-w-3/4">{camp?.title}</p>

@@ -1,13 +1,12 @@
 "use client";
 
-import UserContext, { ContextProvider } from "@/helper/context";
+import { ContextProvider } from "@/helper/context";
 import { useContext, useEffect } from "react";
 import { getUser } from "@/utils/getUser";
 import Cookies from "js-cookie";
 
 import Header from "@/components/shared/header";
 import "../globals.css";
-import { set } from "react-hook-form";
 
 export default function RootLayout({
   children,
@@ -33,12 +32,10 @@ export default function RootLayout({
   }, [token, id, setUser, setLoading, user._id]);
 
   return (
-    <html>
-      <body>
-        <div className={`bgImage`}></div>
-        <Header />
-        <div>{children}</div>
-      </body>
-    </html>
+    <>
+      <div className={`bgImage`}></div>
+      <Header />
+      <div>{children}</div>
+    </>
   );
 }

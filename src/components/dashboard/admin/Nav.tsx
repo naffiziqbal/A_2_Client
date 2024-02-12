@@ -1,10 +1,12 @@
 "use client";
+
+import CreateAdmin from "@/components/shared/Modal/CreateAdmin";
 import { ContextProvider } from "@/helper/context";
 import Link from "next/link";
 import React, { useContext } from "react";
 
 const Nav = () => {
-  const { user } = useContext(ContextProvider);
+  const { user, setAdminModal } = useContext(ContextProvider);
   return (
     <>
       {user?.role === "admin" && (
@@ -18,13 +20,11 @@ const Nav = () => {
             </li>
             <li>
               <button onClick={() => alert("Create New Campaign")}>
-                Create Admin
+                Create Campaign
               </button>
             </li>
             <li>
-              <button onClick={() => alert("Create New Admin")}>
-                Create Admin
-              </button>
+              <button onClick={() => setAdminModal(true)}>Create Admin</button>
             </li>
           </ul>
         </div>

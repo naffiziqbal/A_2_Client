@@ -7,6 +7,7 @@ export const ContextProvider = createContext<any>({});
 
 const UserContext = ({ children }: { children: any }) => {
   const [user, setUser] = useState<any>({});
+  const [adminModal, setAdminModal] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
 
   const createUser = async ({
@@ -45,6 +46,8 @@ const UserContext = ({ children }: { children: any }) => {
     setUser,
     createUser,
     logout,
+    adminModal,
+    setAdminModal,
   };
 
   return (

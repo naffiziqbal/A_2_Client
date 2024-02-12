@@ -1,7 +1,8 @@
+import CreateAdmin from "@/components/shared/Modal/CreateAdmin";
 import React from "react";
 
 const page = () => {
-  return <div>This Is Dashboard</div>;
+  return <div>Dashboard</div>;
 };
 
 export default page;

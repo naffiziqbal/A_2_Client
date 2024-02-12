@@ -1,18 +1,36 @@
 "use client";
 import Sidebar from "@/components/dashboard/Sidebar";
-import Loading from "@/components/ui/Loading";
+import CreateAdmin from "@/components/shared/Modal/CreateAdmin";
 import { ContextProvider } from "@/helper/context";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  const { user } = useContext(ContextProvider);
+
   return (
     <div className=" container mx-auto flex flex-row gap-3">
-      <Sidebar />
-      <div className="w-full">{children}</div>
+      {user._id ? (
+        <>
+          {" "}
+          <Sidebar />
+          <CreateAdmin />
+          <div className="w-full">{children}</div>
+        </>
+      ) : (
+        <div className="h-screen w-screen justify-center items-center flex">
+          Please{" "}
+          <Link
+            className="text-orange-400 underline font-semibold"
+            href={"/login"}
+          >
+            Login
+          </Link>{" "}
+          to access this page
+        </div>
+      )}
     </div>
   );
 };
 
-export default layout;
+export default Layout;

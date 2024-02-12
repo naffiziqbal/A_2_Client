@@ -34,7 +34,9 @@ const Header = () => {
           <Link href={"/"}>Home</Link>
           <Link href={"/campaign"}>Campaigns</Link>
           <Link href={"/statics"}>Statics</Link>
-          <Link href={"/dashboard/all-campaigns"}>Dashboard</Link>
+          {user?.role === "admin" && (
+            <Link href={"/dashboard/all-campaigns"}>Dashboard</Link>
+          )}
           {user?._id ? (
             <button onClick={handleLogout}>
               <BiLogOut className="w-6 h-6 hover:text-orange-400 duration-300" />

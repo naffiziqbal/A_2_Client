@@ -1,6 +1,4 @@
 "use client";
-import CampaignList from "@/components/campaigns/CampaignList";
-import Button from "@/components/ui/Button";
 import Loading from "@/components/ui/Loading";
 import { ICampaign } from "@/types/types";
 import getCampaigns from "@/utils/getCampaigns";

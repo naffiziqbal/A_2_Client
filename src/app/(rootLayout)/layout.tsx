@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 
 import Header from "@/components/shared/header";
 import "../globals.css";
+import Footer from "@/components/shared/Footer";
 
 export default function RootLayout({
   children,
@@ -36,6 +37,7 @@ export default function RootLayout({
       <div className={`bgImage`}></div>
       <Header />
       <div>{children}</div>
+      <Footer />
     </>
   );
 }

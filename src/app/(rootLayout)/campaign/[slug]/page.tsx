@@ -1,6 +1,6 @@
 "use client";
 import DonationModal from "@/components/shared/Modal/DonationModal";
-import { ICampaign, ICampaignProps, IDonation } from "@/types/types";
+import { ICampaign, IDonation } from "@/types/types";
 import { getCampaignDonation } from "@/utils/getCampaignDonation";
 import getSingleCampaign from "@/utils/getSingleCampaign";
 import Image from "next/image";
@@ -36,7 +36,7 @@ const Campaign = ({ params }: { params: { slug: string } }) => {
   }, [_id, campaignDonation]);
 
   return (
-    <div className="container mx-auto w-fit h-full p-3">
+    <div className="w-full h-full p-3 lg:container mx-auto flex  md:flex-row flex-col gap-5 justify-between ">
       <section className="relative max-w-fit ">
         <Image
           className="rounded-lg"
@@ -44,7 +44,6 @@ const Campaign = ({ params }: { params: { slug: string } }) => {
           alt="image"
           width={800}
           height={800}
-          layout="fixed"
         />
         <div className="absolute bottom-0 w-full z-50 backdrop-blur-sm h-fit p-3">
           <button
@@ -55,18 +54,50 @@ const Campaign = ({ params }: { params: { slug: string } }) => {
           </button>
         </div>
       </section>
-      <section className="mt-12 w-full leading-10">
-        <h3 className="text-2xl">{title}</h3>
-        <h2>
-          Total Raised $
-          <span className="bg-gradient-to-br from-orange-400 to-red-500 bg-clip-text text-transparent font-bold">
-            {" "}
-            {campaignDonation
-              ?.map((data: IDonation) => data?.donationAmount)
-              .reduce((a, b) => a + b, 0)}
-          </span>
-        </h2>
-        <p>{description}</p>
+      <section className="mt-12 w-full leading-1 max-w-screen-md">
+        <div>
+          <h3 className="text-2xl">{title}</h3>
+          <h2>
+            Total Raised $
+            <span className="bg-gradient-to-br from-orange-400 to-red-500 bg-clip-text text-transparent font-bold">
+              {" "}
+              {campaignDonation
+                ?.map((data: IDonation) => data?.donationAmount)
+                .reduce((a, b) => a + b, 0)}
+            </span>
+          </h2>
+          <p>{description}</p>
+        </div>
+        <div className="mt-6">
+          <h2 className="text-xl">Let&apos; Thank Warm Hearted Persons</h2>
+          <div className="flex gap-3 mt-3 max-h-96 overflow-y-auto">
+            <table className="w-full ">
+              <tbody>
+                {" "}
+                {/* Add the missing tbody tag */}
+                <tr className=" divide-x-2 border">
+                  <th>Index</th>
+                  <th>Donor Name</th>
+                  <th>Donation Amount</th>
+                </tr>
+                {campaignDonation?.map(
+                  (data: IDonation, idx: number) =>
+                    data && (
+                      <tr
+                        key={data?._id}
+                        className=" divide-x-2 text-center border my-2 [&:nth-child(even)]:bg-orange-400 bg-red-400 text-white"
+                      >
+                        <td>{idx + 1}</td>
+                        <td>{data?.donorName}</td>
+                        <td>{data?.donationAmount}</td>
+                      </tr>
+                    )
+                )}
+              </tbody>
+              {/* Add the missing tbody tag */}
+            </table>
+          </div>
+        </div>
       </section>
 
       <DonationModal

@@ -41,8 +41,8 @@ export interface IDonation {
     campaignId: string
     campaignTitle: string
     donationAmount: number,
-    donatorId: string
-    donatorName: string
+    donorId: string
+    donorName: string
 }
 
 

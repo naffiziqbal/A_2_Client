@@ -1,3 +1,4 @@
+import Vision from "@/components/AboutSection/Vision";
 import CampaignList from "@/components/campaigns/CampaignList";
 import Banner from "@/components/ui/Banner";
 import getCampaigns from "@/utils/getCampaigns";
@@ -8,6 +9,7 @@ const page = async () => {
   return (
     <div>
       <Banner />
+      <Vision />
       <CampaignList data={data} />
     </div>
   );

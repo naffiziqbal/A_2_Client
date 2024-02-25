@@ -30,7 +30,7 @@ const Mission = () => {
             coalitions working for systemic change.{" "}
           </p>
         </div>
-        <div className="shape_mission absolute top-1/4 right-[35rem]  "></div>
+        <div className="shape_mission absolute md:top-1/2 md:left-0 bottom-10 "></div>
       </div>
     </div>
   );

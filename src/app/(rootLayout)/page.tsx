@@ -1,3 +1,4 @@
+import Mission from "@/components/AboutSection/Mission";
 import Vision from "@/components/AboutSection/Vision";
 import CampaignList from "@/components/campaigns/CampaignList";
 import Banner from "@/components/ui/Banner";
@@ -10,6 +11,7 @@ const page = async () => {
     <div>
       <Banner />
       <Vision />
+      <Mission />
       <CampaignList data={data} />
     </div>
   );

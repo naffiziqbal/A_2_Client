@@ -6,7 +6,7 @@ import image2 from "../../asset/mohammed-ibrahim-CFHOBqIm7PM-unsplash.jpg";
 const Vision = () => {
   return (
     <div className="bg-gradient-to-tr from-orange-500 to-red-500 p-3">
-      <div className="flex md:flex-row flex-col  md:container mx-auto  md:justify-center items-center text-white gap-5 relative">
+      <div className="flex md:flex-row flex-col  lg:container mx-auto  md:justify-center items-center text-white gap-5 relative">
         <div className=" md:w-1/2 rounded flex overflow-hidden z-50">
           <Image
             src={image1}

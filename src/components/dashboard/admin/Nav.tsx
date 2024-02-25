@@ -5,7 +5,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 
 const Nav = () => {
-  const { user, setCampaignModal, setAdminModal } = useContext(ContextProvider);
+  const { user, setAdminModal } = useContext(ContextProvider);
   return (
     <>
       {user?.role === "admin" && (
@@ -18,9 +18,7 @@ const Nav = () => {
               <Link href={"/dashboard/all-campaigns"}>All Campaigns</Link>
             </li>
             <li>
-              <button onClick={() => setCampaignModal(true)}>
-                Create Campaign
-              </button>
+              <Link href={"/campaign/create-campaigns"}>Create Campaign</Link>
             </li>
             <li>
               <button onClick={() => setAdminModal(true)}>Create Admin</button>

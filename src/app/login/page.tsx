@@ -35,7 +35,7 @@ const Login = () => {
           icon: "success",
           text: response.message,
         });
-        router.replace("/");
+        router.back();
       }
     } catch (err: any) {
       Swal.fire({

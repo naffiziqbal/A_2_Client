@@ -9,23 +9,26 @@ const Team = () => {
         </p>
       </div>
 
-      <div className=" container mx-auto flex flex-col justify-center items-center  min-h-96 py-12">
-        <div className=" flex flex-col justify-center items-center text-white">
-          <h2 className="md:text-4xl text-3xl uppercase font-bold mb-6">
-            Our Team
-          </h2>
-          <h3 className="text-xl mb-6 primary_text font-bold">
-            Food First Staff
-          </h3>
-          <p className="max-w-screen-xl">
-            Food First prides itself on assembling a dedicated and diverse team
-            of professionals who are passionate about creating a positive impact
-            in the fight for the food sovereignty. Our staff members are a
-            vibrant tapestry of talents, experiences, and expertise, united by a
-            shared commitment. From marketing wizards to logistics maestros, our
-            business-minded professionals work tirelessly to ensure seamless
-            operations for the organization. View our Staff Members.
-          </p>
+      <div className=" container mx-auto flex flex-col justify-center items-center  min-h-96 py-12 ">
+        <div className=" text-white my-12">
+          <section className="flex flex-col justify-center items-center">
+            <h2 className="md:text-4xl text-3xl uppercase font-bold mb-6">
+              Our Team
+            </h2>
+            <h3 className="text-xl mb-6 primary_text font-bold">
+              Food First Staff
+            </h3>
+            <p className="max-w-screen-xl">
+              Food First prides itself on assembling a dedicated and diverse
+              team of professionals who are passionate about creating a positive
+              impact in the fight for the food sovereignty. Our staff members
+              are a vibrant tapestry of talents, experiences, and expertise,
+              united by a shared commitment. From marketing wizards to logistics
+              maestros, our business-minded professionals work tirelessly to
+              ensure seamless operations for the organization. View our Staff
+              Members.
+            </p>
+          </section>
           <section className="grid md:grid-cols-3 gap-5  grid-cols-1 mt-12 max-w-screen-xl">
             <div className="*:leading-7">
               <h1 className="text-xl mb-4 primary_text">BOARD OF DIRECTORS</h1>

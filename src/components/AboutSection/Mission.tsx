@@ -1,11 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import image from "../../asset/sanjoy-sadhukhan-WhE7KK-HPmY-unsplash.jpg";
+import Link from "next/link";
 
 const Mission = () => {
   return (
     <div className="p-3 m mt-6">
-      <div className="flex md:flex-row-reverse flex-col  md:container mx-auto  md:justify-center items-center gap-5 relative">
+      <div className="flex md:flex-row-reverse flex-col  lg:container mx-auto  md:justify-center items-center gap-5 relative">
         <div className=" md:w-1/2 rounded flex overflow-hidden z-50 bg-white">
           <Image
             src={image}
@@ -22,13 +23,19 @@ const Mission = () => {
             First, enMissions a world in which all people have access to
             healthy, ecologically produced, and culturally appropriate food.
           </p>
-          <p className="text-lg my-6">
+          <p className="text-lg my-6 mb-12">
             After 40 years of analysis of the global food system, we know that
             making this Mission a reality involves more than technical solutions
             — it requires action and political transformation. That’s why Food
             First supports activists, social movements, alliances, and
             coalitions working for systemic change.{" "}
           </p>
+          <Link
+            className=" px-6 bg-gradient-to-br from-orange-400 to-red-500 p-3 text-white rounded-md font-bold shadow-md hover:shadow-lg hover:shadow-slate-500 duration-300 absolute bottom-0"
+            href={"/campaign/create-campaigns"}
+          >
+            Create Campaigns
+          </Link>
         </div>
         <div className="shape_mission absolute md:top-1/2 md:left-0 bottom-10 "></div>
       </div>

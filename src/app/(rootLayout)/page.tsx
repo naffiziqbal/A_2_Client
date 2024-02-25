@@ -7,7 +7,7 @@ import getCampaigns from "@/utils/getCampaigns";
 import React from "react";
 
 const page = async () => {
-  const { data } = await getCampaigns(10);
+  const { data } = await getCampaigns(8);
   return (
     <div>
       <Banner />

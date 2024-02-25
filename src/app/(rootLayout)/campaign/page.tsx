@@ -32,7 +32,7 @@ const Campaigns = () => {
             className=" rounded-lg border p-3 overflow-hidden hover:scale-105 duration-300 hover:shadow-2xl h-96 object-contain "
           >
             <Image
-              className=" h-52 object-contain"
+              className="h-52 w-full object-cover object-center duration-300"
               src={camp?.image}
               width={600}
               height={300}

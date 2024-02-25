@@ -4,19 +4,22 @@ import Link from "next/link";
 import React from "react";
 
 const CampaignList = async ({ data }: ICampaignProps) => {
-  // console.log(data);
+  console.log(data);
 
   return (
-    <>
-      <div className="container mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 items-center md:mt-16 mt-8 rounded-lg gap-5 p-3">
+    <div className="lg:container mx-auto md:mt-16 mt-8">
+      <h3 className="text-center  text-2xl  font-bold">
+        Currently Ongoing Campings
+      </h3>
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 items-center  mt-8 rounded-lg gap-5 p-3">
         {data?.map((camp: ICampaign) => (
           <Link
             key={camp?._id}
             href={`/campaign/${camp?._id}`}
-            className="rounded-lg border p-3 overflow-hidden  h-auto hover:scale-105 duration-300 hover:shadow-2xl"
+            className="rounded-lg border p-3 overflow-hidden h-96 hover:scale-105 duration-300 hover:shadow-2xl"
           >
             <Image
-              className="aspect-square"
+              className="h-52 w-full object-cover object-center duration-300"
               src={camp?.image}
               width={600}
               height={300}
@@ -47,7 +50,7 @@ const CampaignList = async ({ data }: ICampaignProps) => {
           See All
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 

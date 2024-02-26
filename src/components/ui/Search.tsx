@@ -13,7 +13,6 @@ const Search = ({ data }: ICampaignProps) => {
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
-    console.log(term);
     setSearchTerm(term.toLowerCase());
     // Perform search and update results
     const results = data.filter((item: ICampaign) =>
@@ -34,10 +33,6 @@ const Search = ({ data }: ICampaignProps) => {
           placeholder="Search Category....."
         />
         <HiSearchCircle className="w-16  h-16 bg-gradient-to-tr  from-orange-600 to-red-500 p-3 rounded-r-lg border border-transparent cursor-pointer" />
-        {/* <input
-            type="submit"
-            className="w-1/4 bg-gradient-to-tr  from-orange-600 to-red-500 p-3 rounded-r-lg border border-transparent cursor-pointer"
-          /> */}
       </div>
       {searchTerm.length > 0 && (
         <div className="bg-white w-full mt-3 p-3 rounded-md shadow-xl text-black max-h-96 overflow-y-auto">
@@ -45,18 +40,23 @@ const Search = ({ data }: ICampaignProps) => {
             ? searchResults.map((data: any) => (
                 <Link
                   href={`/campaign/${data._id}`}
-                  className="flex items-center gap-3 border  min-h-fit duration-700"
+                  className="flex items-center gap-3 border  min-h-fit duration-300 my-3 rounded-lg hover:border-orange-400 hover:shadow-lg"
                   key={data._id}
                 >
                   <Image
                     src={data?.image}
                     alt="product-image"
-                    width={100}
-                    height={100}
+                    width={200}
+                    height={200}
+                    className="w-fit h-32 object-cover rounded-tl-lg rounded-bl-lg duration-300"
                   />
                   <section className="flex flex-col justify-start items-start">
                     <p>{data?.title}</p>
-                    <p>{data?.description}</p>
+                    <p className="text-wrap text-start font-normal">
+                      {data?.description?.length > 100
+                        ? data?.description?.slice(0, 100) + "...."
+                        : data?.description}
+                    </p>
                   </section>
                 </Link>
               ))

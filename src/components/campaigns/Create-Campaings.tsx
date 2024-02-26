@@ -123,7 +123,7 @@ const CreateCampings: React.FC = () => {
             <div className="my-3">
               <label htmlFor="amount" className="leading-8">
                 <input
-                  placeholder="Enter Initial Amount"
+                  placeholder="Enter Amount To Raise"
                   type="number"
                   {...register("amount", {
                     required: true,

@@ -43,7 +43,13 @@ const Campaigns = () => {
               </p>
               <section className="flex flex-row justify-between gap-3 leading-10">
                 <p className="font-bold max-w-3/4">{camp?.title}</p>
-                <p>{camp?.amount}</p>
+                <p className="">
+                  {" "}
+                  Amount To Raise:
+                  <span className="mx-2 text-orange-400 font-bold">
+                    ${camp?.amount}
+                  </span>
+                </p>
               </section>
               <p className="text-wrap text-sm">
                 {camp?.description?.length > 100

@@ -50,7 +50,7 @@
 .shape_mission {
   width: 200px;
   height: 200px;
-  background-image: linear-gradient(35deg, #f3f3f3, #cccccc28);
+  background-image: linear-gradient(35deg, #d1d1d1, #d1d1d128);
   border-radius: 45% 0% 45% 1%;
   -webkit-border-radius: 45% 0% 45% 1%;
   -moz-border-radius: 45% 0% 45% 1%;

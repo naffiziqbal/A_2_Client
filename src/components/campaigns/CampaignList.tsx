@@ -14,7 +14,7 @@ const CampaignList = async ({ data }: ICampaignProps) => {
           <Link
             key={camp?._id}
             href={`/campaign/${camp?._id}`}
-            className="rounded-lg border p-3 overflow-hidden min-h-96 h-fit  duration-300 hover:shadow-2xl"
+            className="rounded-lg border-slate-300 border p-3 overflow-hidden min-h-96 h-fit  duration-300 hover:shadow-2xl"
           >
             <Image
               className="h-52 w-full object-cover rounded-xl object-center duration-300"
@@ -24,16 +24,16 @@ const CampaignList = async ({ data }: ICampaignProps) => {
               alt="image"
             />
             <section className="mt-6">
-              <p className="border rounded-md my-4 w-fit bg-neutral-50 text-black px-4 text-sm">
-                { camp?.category}
+              <p className="border rounded-md my-4 w-fit bg-gradient-to-br from-orange-500 to-red-500 text-white border-slate-300  px-4 text-sm shadow-2xl backdrop-blur-3xl">
+                {camp?.category}
               </p>
               <section className="flex flex-row justify-between gap-3 leading-10">
                 <p className="font-bold max-w-3/4">{camp?.title}</p>
                 <p className="">
                   {" "}
-                  Amount To Raise: 
+                  Amount To Raise:
                   <span className="mx-2 text-orange-400 font-bold">
-                     ${camp?.amount}
+                    ${camp?.amount}
                   </span>
                 </p>
               </section>

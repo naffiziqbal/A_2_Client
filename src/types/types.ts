@@ -44,6 +44,16 @@ export interface IDonation {
     donorId: string
     donorName: string
 }
+export interface IDonationProps {
+    data: {
+        _id: string
+        campaignId: string
+        campaignTitle: string
+        donationAmount: number,
+        donorId: string
+        donorName: string
+    }[]
+}
 
 
 export interface IRegistrationInputs {

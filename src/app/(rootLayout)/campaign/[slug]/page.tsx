@@ -1,4 +1,6 @@
 "use client";
+import DonationBtn from "@/components/campaigns/DonationBtn";
+import DonorData from "@/components/campaigns/DonorData";
 import DonationModal from "@/components/shared/Modal/DonationModal";
 import { ICampaign, IDonation } from "@/types/types";
 import { getCampaignDonation } from "@/utils/getCampaignDonation";
@@ -48,7 +50,7 @@ const Campaign = ({ params }: { params: { slug: string } }) => {
   }, [campaignDonation, data]);
 
   return (
-    <div className="w-full h-full p-3 lg:container mx-auto flex  md:flex-row flex-col gap-5 justify-between ">
+    <div className="relative w-full h-full p-3 lg:container mx-auto flex  md:flex-row flex-col gap-5 justify-between ">
       <section className="relative max-w-fit ">
         <Image
           className="rounded-lg"
@@ -57,28 +59,20 @@ const Campaign = ({ params }: { params: { slug: string } }) => {
           width={800}
           height={800}
         />
-        <div className="absolute bottom-0 w-full z-50 backdrop-blur-sm h-fit p-3">
-          <button
-            onClick={() => handleClick(_id)}
-            className={`px-3  py-2 rounded-md text-white ${
-              completeDonation
-                ? "bg-gray-400  cursor-not-allowed pointer-events-none"
-                : "bg-gradient-to-br from-orange-400 to-red-500"
-            }`}
-          >
-            {completeDonation ? "Fund Raised" : "Donate Now"}
-          </button>
-          {/*  Disable Button if Fund is Raised 100% */}
-        </div>
+        {/*  Donation Button */}
+        <DonationBtn
+          _id={_id}
+          setModalOpen={setModalOpen}
+          completeDonation={completeDonation}
+        />
       </section>
       <section className="mt-12 w-full leading-1 max-w-screen-md">
         <div>
-          <h3 className="text-2xl">{title}</h3>
+          <h3 className="text-2xl font-semibold">{title}</h3>
           <section className="my-6 flex justify-between">
             <h2 className="">
-              Total Raised $
+              Total Raised: $
               <span className="bg-gradient-to-br from-orange-400 to-red-500 bg-clip-text text-transparent font-bold">
-                {" "}
                 {campaignDonation
                   ?.map((data: IDonation) => data?.donationAmount)
                   .reduce((a, b) => a + b, 0)}
@@ -87,6 +81,7 @@ const Campaign = ({ params }: { params: { slug: string } }) => {
             <h2 className="">
               Amount Left To raise:{" "}
               <span className="bg-gradient-to-br from-orange-400 to-red-500 bg-clip-text text-transparent font-bold">
+                $
                 {data?.amount -
                   campaignDonation
                     ?.map((data: IDonation) => data?.donationAmount)
@@ -101,36 +96,12 @@ const Campaign = ({ params }: { params: { slug: string } }) => {
               {/* The expression inside the curly braces is calculating the remaining amount of a campaign donation. It does this by subtracting the total amount of all donations from the total amount of the campaign. if Raised Amount is less than 0 it will return 0 else remaining amount */}
             </h2>
           </section>
-
           <h2 className="text-xl">Description</h2>
           <p>{description}</p>
         </div>
         <div className="mt-6">
           <h2 className="text-xl">Let&apos; Thank Warm Hearted Persons</h2>
-          <div className="flex gap-3 mt-3 max-h-96 overflow-y-auto">
-            <table className="w-full ">
-              <tbody>
-                <tr className=" divide-x-2 border">
-                  <th>Index</th>
-                  <th>Donor Name</th>
-                  <th>Donation Amount</th>
-                </tr>
-                {campaignDonation?.map(
-                  (data: IDonation, idx: number) =>
-                    data && (
-                      <tr
-                        key={data?._id}
-                        className=" divide-x-2 text-center border my-2 [&:nth-child(even)]:bg-orange-400 bg-red-400 text-white"
-                      >
-                        <td>{idx + 1}</td>
-                        <td>{data?.donorName}</td>
-                        <td>{data?.donationAmount}</td>
-                      </tr>
-                    )
-                )}
-              </tbody>
-            </table>
-          </div>
+          <DonorData data={campaignDonation} />
         </div>
       </section>
 

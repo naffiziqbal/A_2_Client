@@ -10,29 +10,28 @@ const Campaigns = () => {
   const [limit, setLimit] = useState<number | null>(10);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+
   useEffect(() => {
     const getCampaign = async (limit: number | null) => {
       setLoading(true);
       const { data } = await getCampaigns(limit);
       setData(data);
       setLoading(false);
-      // console.log(data);
     };
     getCampaign(limit);
   }, [limit]);
-  // console.log(data);
 
   return (
     <div className="">
-      <div className="container mx-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 items-center md:mt-16 mt-8 rounded-lg gap-5 p-3">
+      <div className="md:container mx-auto grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 items-center md:mt-16 mt-8  gap-5 p-3">
         {data?.map((camp: ICampaign) => (
           <Link
             key={camp?._id}
             href={`/campaign/${camp?._id}`}
-            className=" rounded-lg border p-3 overflow-hidden hover:scale-105 duration-300 hover:shadow-2xl h-96 object-contain "
+            className="  border p-3 overflow-hidden  duration-300 hover:shadow-2xl min-h-96 rounded-lg h-fit object-contain "
           >
             <Image
-              className="h-52 w-full object-cover object-center duration-300"
+              className="h-52 w-full object-cover object-center duration-300 rounded-xl"
               src={camp?.image}
               width={600}
               height={300}
@@ -46,7 +45,7 @@ const Campaigns = () => {
                 <p className="font-bold max-w-3/4">{camp?.title}</p>
                 <p>{camp?.amount}</p>
               </section>
-              <p className="text-wrap">
+              <p className="text-wrap text-sm">
                 {camp?.description?.length > 100
                   ? camp?.description?.slice(0, 100) + "...."
                   : camp?.description}

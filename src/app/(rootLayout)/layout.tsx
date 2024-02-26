@@ -8,6 +8,7 @@ import Cookies from "js-cookie";
 import Header from "@/components/shared/header";
 import "../globals.css";
 import Footer from "@/components/shared/Footer";
+import Head from "next/head";
 
 export default function RootLayout({
   children,

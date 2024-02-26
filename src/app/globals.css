@@ -41,8 +41,6 @@
   clip-path: polygon(50% 0%, 100% 29%, 100% 71%, 50% 100%, 0% 71%, 0% 29%);
 }
 
-
-
 .shape_hex {
   width: 200px;
   height: 200px;
@@ -65,4 +63,16 @@
   text-overflow: clip;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+::-webkit-progress-bar {
+  width: 10px;
+}
+
+::-webkit-progress-value {
+  background: linear-gradient(45deg, #fabe1a, #f73a3a);
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }

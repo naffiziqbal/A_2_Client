@@ -25,7 +25,7 @@ const page = async () => {
     </tr>
   ));
   return (
-    <div className="w-full mx-auto container">
+    <div className="w-full max-h-screen overflow-y-auto mx-auto container">
       <table className="[&>*:nth-child(even)]:bg-slate-200 [&>*:nth-child(even)]:rounded-lg w-full *:p-2 flex flex-col justify-around g-4">
         <tr className="w-full flex flex-row justify-between items-start *:w-full text-center">
           <th>Image</th>

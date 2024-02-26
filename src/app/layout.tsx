@@ -1,5 +1,12 @@
 import UserContext from "@/helper/context";
 import "./globals.css";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Crowd Found",
+  description: "A Global Helping Hand Community",
+  keywords: "crowd found, helping hand, community",
+};
 
 export default function RootLayout({
   children,
@@ -8,12 +15,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-      </head>
       <body>
         <UserContext>{children}</UserContext>
       </body>
